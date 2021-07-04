@@ -9,4 +9,5 @@ fun BigDecimal.formataParaBrasileiro(): String {
             .getCurrencyInstance(Locale("pt", "br"))
     return formatoBrasileiro.format(this)
             .replace("R$", "R$ ")
+            .replace("-R$ ", "R$ -")
 }

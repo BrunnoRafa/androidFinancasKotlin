@@ -10,7 +10,7 @@ import br.com.bruno.financask.model.Transacao
 import kotlinx.android.synthetic.main.resumo_card.view.*
 import java.math.BigDecimal
 
-class ResumoView(private val view: View,
+class ResumoView(private val view: View?,
                  private val context: Context,
                  transacoes: List<Transacao>) {
 
@@ -27,19 +27,22 @@ class ResumoView(private val view: View,
     private fun adicionaReceita() {
         val totalReceitas = resumo.receita
 
-        with(view.resumo_card_receita) {
-            setTextColor(corReceita)
-            text = totalReceitas.formataParaBrasileiro()
+        view?.let {
+            with(it.resumo_card_receita) {
+                setTextColor(corReceita)
+                text = totalReceitas.formataParaBrasileiro()
+            }
         }
     }
 
 
     private fun adicionaDespesa() {
         val totalDespesas = resumo.despesa
-
-        with(view.resumo_card_despesa) {
-            setTextColor(corDespesa)
-            text = totalDespesas.formataParaBrasileiro()
+        view?.let {
+            with(view.resumo_card_despesa) {
+                setTextColor(corDespesa)
+                text = totalDespesas.formataParaBrasileiro()
+            }
         }
     }
 
@@ -47,9 +50,11 @@ class ResumoView(private val view: View,
         val total = resumo.total
 
         val corTotal: Int = formataCorTotal(total)
-        with(view.resumo_card_total) {
-            setTextColor(corTotal)
-            text = total.formataParaBrasileiro()
+        view?.let {
+            with(view.resumo_card_total) {
+                setTextColor(corTotal)
+                text = total.formataParaBrasileiro()
+            }
         }
     }
 

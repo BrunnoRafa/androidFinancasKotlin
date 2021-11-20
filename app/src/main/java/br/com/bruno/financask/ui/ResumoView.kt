@@ -27,6 +27,7 @@ class ResumoView(private val view: View?,
     private fun adicionaReceita() {
         val totalReceitas = resumo.receita
 
+
         view?.let {
             with(it.resumo_card_receita) {
                 setTextColor(corReceita)
